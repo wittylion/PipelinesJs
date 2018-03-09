@@ -1,0 +1,26 @@
+{
+  "name": "solid-pipelines",
+  "version": "1.0.0",
+  "description": "Library exposing SOLID principles by introducing pipelines mechanism.",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SergAtGitHub/PipelinesJs.git"
+  },
+  "keywords": [
+    "Pipelines",
+    "SOLID",
+    "Processors",
+    "Chain"
+  ],
+  "author": "Sergey Solomentsev",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/SergAtGitHub/PipelinesJs/issues"
+  },
+  "homepage": "https://github.com/SergAtGitHub/PipelinesJs#readme"
+}
