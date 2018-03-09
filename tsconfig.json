@@ -1,9 +1,11 @@
 {
     "compilerOptions": {
-        "module": "none",
-        "target": "es2016",
-        "outFile": "./build/build.js",
-        "jsx": "preserve"
+        "target": "es2015",
+        "outDir": "build",
+        "module": "commonjs",
+        "sourceMap": true,
+        "watch": true,
+        "declaration": true
     },
     "exclude": [
         "node_modules",
