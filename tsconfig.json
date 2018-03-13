@@ -4,7 +4,6 @@
         "outDir": "build",
         "module": "commonjs",
         "sourceMap": true,
-        "watch": true,
         "declaration": true
     },
     "exclude": [
