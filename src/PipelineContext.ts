@@ -4,7 +4,7 @@ import { MessageFilter } from "./MessageFilter";
 
 export class PipelineContext {
     public IsAborted: boolean;
-    protected Messages: PipelineMessage[];
+    protected Messages: PipelineMessage[] = [];
     public GetMessages(filter: MessageFilter): PipelineMessage[] {
         if (this.Messages && this.Messages.length > 0) {
             if (filter == MessageFilter.All) {
