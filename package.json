@@ -1,6 +1,6 @@
 {
   "name": "solid-pipelines",
-  "version": "1.0.4",
+  "version": "1.1.1",
   "description": "Library exposing SOLID principles by introducing pipelines mechanism.",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",

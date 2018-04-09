@@ -6,4 +6,5 @@ export { PipelineContext } from './src/PipelineContext';
 export { QueryContext } from './src/QueryContext';
 export { PipelineMessage } from './src/PipelineMessage';
 export { PipelineRunner } from './src/PipelineRunner';
+export { SafeTypeProcessor } from './src/SafeTypeProcessor';
 export { SafeProcessor } from './src/SafeProcessor';
