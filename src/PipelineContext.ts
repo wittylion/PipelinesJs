@@ -2,6 +2,11 @@ import { MessageType } from "./MessageType";
 import { PipelineMessage } from "./PipelineMessage";
 import { MessageFilter } from "./MessageFilter";
 
+/**
+ * Introduces possibility to keep context information
+ * about the flow of the pipeline, like:
+ * messages and whether pipeline was aborted.
+ */
 export class PipelineContext {
     public IsAborted: boolean = false;
 
