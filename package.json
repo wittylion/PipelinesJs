@@ -1,11 +1,10 @@
 {
   "name": "solid-pipelines",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Library exposing SOLID principles by introducing pipelines mechanism.",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
