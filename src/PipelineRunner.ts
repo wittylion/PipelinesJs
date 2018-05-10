@@ -6,6 +6,7 @@ import { HasNoValue, Ensure, HasValue } from "./ObjectExtensions";
  * Runs your pipeline or a set of processors or a single processor.
  */
 export class PipelineRunner {
+    public static readonly StaticInstance: PipelineRunner = new PipelineRunner();
     public RunPipeline<TArgs>(pipeline: IPipeline, args: TArgs): Promise<void> {
         if (HasNoValue(pipeline)) {
             return;

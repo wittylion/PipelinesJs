@@ -1,6 +1,7 @@
 import { MessageType } from "./MessageType";
 import { PipelineMessage } from "./PipelineMessage";
 import { MessageFilter } from "./MessageFilter";
+import { PipelineMessageCollection } from "./PipelineMessageCollection";
 
 /**
  * Introduces possibility to keep context information
@@ -10,7 +11,7 @@ import { MessageFilter } from "./MessageFilter";
 export class PipelineContext {
     public IsAborted: boolean = false;
 
-    protected Messages: PipelineMessage[] = [];
+    protected Messages: PipelineMessage[] = new PipelineMessageCollection();
 
     public GetMessages(filter: MessageFilter): PipelineMessage[] {
         if (this.Messages && this.Messages.length > 0) {
