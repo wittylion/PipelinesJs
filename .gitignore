@@ -6,3 +6,6 @@
 .history
 /build
 node_modules
+*.js
+*.d.ts
+*.js.map

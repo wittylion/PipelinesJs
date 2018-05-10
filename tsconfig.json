@@ -1,7 +1,6 @@
 {
     "compilerOptions": {
         "target": "es2015",
-        "outDir": "build",
         "module": "commonjs",
         "sourceMap": true,
         "declaration": true
@@ -9,7 +8,6 @@
     "exclude": [
         "node_modules",
         "**/node_modules/*",
-        "build",
-        "lib"
+        "build"
     ]
 }
