@@ -6,7 +6,7 @@ export class PipelineMessage {
     public Message: string;
     public MessageType: MessageType;
     constructor(message: string, messageType: MessageType) {
-        if (HasNoValue(message)) {
+        if (!message || message.trim().length === 0) {
             throw new Error(PipelineMessage.MessageIsNotSetError);
         }
         this.Message = message;
