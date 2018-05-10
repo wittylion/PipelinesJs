@@ -8,3 +8,5 @@ export { PipelineMessage } from './src/PipelineMessage';
 export { PipelineRunner } from './src/PipelineRunner';
 export { SafeTypeProcessor } from './src/SafeTypeProcessor';
 export { SafeProcessor } from './src/SafeProcessor';
+export { PipelineMessageCollection } from './src/PipelineMessageCollection';
+export { PipelineExecutor } from './src/PipelineExecutor';
