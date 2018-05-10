@@ -5,7 +5,7 @@ import { MessageType } from "../lib/src/MessageType";
 import { expect } from "chai";
 
 describe('PipelinesJS Pipeline Message', () => {
-    describe('Negative scenario', () => {
+    context('Negative scenario', () => {
         it('Should throw an error when user tries to create a message with undefined text.', () => {
             let messageFactory = () => {
                 return new PipelineMessage(undefined, MessageType.Error);
@@ -29,7 +29,7 @@ describe('PipelinesJS Pipeline Message', () => {
         });
     });
     
-    describe('Positive scenario', () => {
+    context('Positive scenario', () => {
         it('Should not throw an error when user creates a message with text.', () => {
             let messageFactory = () => {
                 return new PipelineMessage("Information message", MessageType.Information);
