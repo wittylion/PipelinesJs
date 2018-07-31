@@ -3,15 +3,6 @@ import { PipelineMessage } from "./PipelineMessage";
 import { MessageFilter } from "./MessageFilter";
 import { PipelineMessageCollection } from "./PipelineMessageCollection";
 
-export class ContextProperty {
-    constructor(
-        public name: string,
-        public value: any,
-    ) {
-
-    }
-}
-
 /**
  * Introduces possibility to keep context information
  * about the flow of the pipeline, like:
@@ -144,5 +135,14 @@ export class PipelineContext {
 
     public AddError(message: string): void {
         this.AddMessage(message, MessageType.Error);
+    }
+}
+
+class ContextProperty {
+    constructor(
+        public name: string,
+        public value: any,
+    ) {
+
     }
 }
