@@ -24,19 +24,18 @@ export class PipelineContext {
     protected Messages: PipelineMessage[] = new PipelineMessageCollection();
 
     public GetPropertyValueOrUndefined<T>(name: string): T {
-        let property = this.Properties.find(x => x.name == name);
-
-        if (property)
-            return <T>property.value;
-
-        return undefined;
+        return this.GetPropertyValueOrDefault<T>(name, undefined);
     }
 
     public GetPropertyValueOrDefault<T>(name: string, defaultValue: T): T {
         let property = this.Properties.find(x => x.name == name);
 
         if (property)
-            return <T>property.value;
+        {
+            if (property.value as T) {
+                return <T>property.value;
+            }
+        }
 
         return defaultValue;
     }
