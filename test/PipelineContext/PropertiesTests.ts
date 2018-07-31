@@ -1,4 +1,4 @@
-import { PipelineContext } from "../lib";
+import { PipelineContext } from "../../lib";
 import { expect } from "chai";
 
 describe("Pipeline context can create a new context", () => {
