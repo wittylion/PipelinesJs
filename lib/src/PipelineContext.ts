@@ -21,8 +21,7 @@ export class PipelineContext {
     public GetPropertyValueOrDefault<T>(name: string, defaultValue: T): T {
         let property = this.Properties.find(x => x.name == name);
 
-        if (property)
-        {
+        if (property) {
             if (property.value as T) {
                 return <T>property.value;
             }
