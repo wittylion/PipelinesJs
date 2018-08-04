@@ -11,8 +11,9 @@ export class ExecuteForEachElementInPropertyProcessor<TContext extends PipelineC
         "Creating a generic class used to execute action for each element, you have to specify property name of the enumerable of elements.";
 
     constructor(
-        private readonly action: (TContext, TElement) => Promise<void>,
-        private readonly propertyName: string) {
+        private readonly propertyName: string,
+        private readonly action: (TContext, TElement) => Promise<void>
+    ) {
         super();
         if (!action) {
             throw new ReferenceError(

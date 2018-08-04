@@ -1,17 +1,10 @@
 import { PipelineContext } from "../../PipelineContext";
-import { SafeProcessor } from "../../SafeProcessor";
+import { ExecuteActionForPropertyProcessorConcept } from "./ExecuteActionForPropertyProcessorConcept";
 
 export abstract class ExecuteForEachElementInPropertyProcessorConcept<TContext extends PipelineContext, TElement>
-    extends SafeProcessor<TContext> {
+    extends ExecuteActionForPropertyProcessorConcept<TContext, TElement[]> {
 
-    public async SafeExecute(args: TContext): Promise<void> {
-
-        let propertyName = this.GetPropertyName(args);
-        let property = args.GetPropertyValueOrUndefined<TElement[]>(propertyName);
-        if (!property) {
-            return;
-        }
-
+    public async PropertyExecution(args: TContext, property: TElement[]): Promise<void> {
         await this.CollectionExecution(args, property);
     }
 
@@ -22,6 +15,4 @@ export abstract class ExecuteForEachElementInPropertyProcessorConcept<TContext e
     }
 
     public abstract ElementExecution(args: TContext, element: TElement): Promise<void>;
-    public abstract GetPropertyName(args: TContext): string;
-
 }
