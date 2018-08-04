@@ -2,6 +2,7 @@ export { PipelineOfState } from './pipelines/PipelineOfState';
 export { PredefinedPipeline } from './pipelines/PredefinedPipeline';
 export { RepeatingProcessorsPipelineConcept } from './pipelines/RepeatingProcessorsPipelineConcept';
 export { RepeatingProcessorsWhileConditionPipeline } from './pipelines/RepeatingProcessorsWhileConditionPipeline';
+export { ConstructablePipeline } from './pipelines/ConstructablePipeline'
 
 export { ActionProcessor } from './processors/ActionProcessor';
 export { ConditionalActionProcessor } from './processors/ConditionalActionProcessor';
