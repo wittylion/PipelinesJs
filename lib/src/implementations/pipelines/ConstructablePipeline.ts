@@ -29,7 +29,7 @@ export abstract class ConstructablePipeline implements IPipeline {
     
     }
 
-    public static ExecuteActionForProperty<TContext extends PipelineContext, TProperty>(
+    public ExecuteActionForProperty<TContext extends PipelineContext, TProperty>(
         propertyName: string,
         action: (TContext, TProperty) => Promise<void>
     ): ExecuteActionForPropertyProcessor<TContext, TProperty> {
