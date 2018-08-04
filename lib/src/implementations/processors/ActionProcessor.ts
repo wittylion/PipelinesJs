@@ -4,7 +4,7 @@ export class ActionProcessor<TArgs> extends SafeTypeProcessor<TArgs> {
 
     public static readonly ActionMustBeSpecifiedInGenericProcessor: string = "Creating a generic 'action' processor, you have to provide action which will be executed. Action represented by parameter (GenericType) => Promise<void>.";
 
-    public static FromAction<T>(action: (Object) => Promise<void>): SafeTypeProcessor<T> {
+    public static FromAction<T>(action: (Object) => Promise<void>): ActionProcessor<T> {
         return new ActionProcessor<T>(action);
     }
 
