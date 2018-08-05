@@ -26,8 +26,8 @@ export class ExecuteForEachElementInPropertyProcessor<TContext extends PipelineC
         }
     }
 
-    public async ElementExecution(context: TContext, element: TElement): Promise<void> {
-        this.action(context, element);
+    public ElementExecution(context: TContext, element: TElement): Promise<void> {
+        return this.action(context, element);
     }
 
     public GetPropertyName(context: TContext): string {
