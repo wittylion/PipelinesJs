@@ -2,6 +2,7 @@ import { MessageType } from "./MessageType";
 import { PipelineMessage } from "./PipelineMessage";
 import { MessageFilter } from "./MessageFilter";
 import { PipelineMessageCollection } from "./PipelineMessageCollection";
+import { PipelineProperty } from './PipelineProperty'
 
 /**
  * Introduces possibility to keep context information
@@ -11,15 +12,25 @@ import { PipelineMessageCollection } from "./PipelineMessageCollection";
 export class PipelineContext {
     public IsAborted: boolean = false;
 
-    protected Properties: ContextProperty[] = [];
+    protected Properties: PipelineProperty[] = [];
     protected Messages: PipelineMessage[] = new PipelineMessageCollection();
 
-    public GetPropertyValueOrUndefined<T>(name: string): T {
+    constructor(properties?: {}) {
+        if (properties) {
+            for (let key in properties) {
+                let value = properties[key];
+
+                this.Properties.push(new PipelineProperty(key, value));
+            }
+        }
+    }
+
+    public GetPropertyValueOrUndefined<T>(name: string): T | undefined {
         return this.GetPropertyValueOrDefault<T>(name, undefined);
     }
 
     public GetPropertyValueOrDefault<T>(name: string, defaultValue: T): T {
-        let property = this.Properties.find(x => x.name == name);
+        let property = this.GetPropertyObjectOrUndefined(name);
 
         if (property) {
             if (property.value as T) {
@@ -30,13 +41,45 @@ export class PipelineContext {
         return defaultValue;
     }
 
-    public AddOrSkipPropertyIfExists<T>(name: string, value: T) {
+    public GetPropertyObjectOrUndefined(name: string): PipelineProperty | undefined {
         let property = this.Properties.find(x => x.name == name);
 
-        if (property)
+        if (property) {
+            return property;
+        }
+
+        return undefined;
+    }
+
+    public GetAllProperties(): PipelineProperty[] {
+        return this.Properties;
+    }
+
+    public GetAllPropertiesAsObject(): {} {
+        let result = {};
+
+        for (const property of this.Properties) {
+            result[property.name] = property.value;
+        }
+
+        return result;
+    }
+
+    public AddOrSkipPropertyObjectIfExists(property: PipelineProperty) {
+        if (!property)
             return;
 
-        return this.Properties.push(new ContextProperty(name, value));
+        let dictionaryProperty = this.GetPropertyObjectOrUndefined(property.name);
+
+        if (dictionaryProperty) {
+            return;
+        }
+
+        return this.Properties.push(property);
+    }
+
+    public AddOrSkipPropertyIfExists<T>(name: string, value: T) {
+        return this.AddOrSkipPropertyObjectIfExists(new PipelineProperty(name, value));
     }
 
     public SetOrAddProperty<T>(name: string, value: T) {
@@ -44,12 +87,12 @@ export class PipelineContext {
     }
 
     public UpdateOrAddProperty<T>(name: string, value: T) {
-        let property = this.Properties.find(x => x.name == name);
+        let property = this.GetPropertyObjectOrUndefined(name);
 
         if (property)
             property.value = value;
 
-        return this.Properties.push(new ContextProperty(name, value));
+        return this.Properties.push(new PipelineProperty(name, value));
     }
 
     public GetMessages(filter: MessageFilter): PipelineMessage[] {
@@ -134,14 +177,5 @@ export class PipelineContext {
 
     public AddError(message: string): void {
         this.AddMessage(message, MessageType.Error);
-    }
-}
-
-class ContextProperty {
-    constructor(
-        public name: string,
-        public value: any,
-    ) {
-
     }
 }
